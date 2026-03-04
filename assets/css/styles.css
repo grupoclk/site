@@ -1,0 +1,558 @@
+:root{
+  --bg:#111111;
+  --bg2:#1E1E1E;
+  --text:#FFFFFF;
+  --muted:rgba(255,255,255,.74);
+  --muted2:rgba(255,255,255,.58);
+  --line:rgba(255,255,255,.10);
+  --line2:rgba(255,255,255,.08);
+  --accent:#B7E100;
+  --accentDark:#0c0c0c;
+
+  --radius:18px;
+  --radius2:14px;
+  --container:1180px;
+}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  font-family: Inter, Montserrat, Poppins, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  letter-spacing: 0;
+}
+
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+
+.container{
+  width:min(100%, var(--container));
+  margin:0 auto;
+  padding:0 18px;
+}
+
+/* =========================
+   HEADER (estilo vídeo)
+========================= */
+.header{
+  position:sticky;
+  top:0;
+  z-index:100;
+  background: rgba(17,17,17,.82);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--line2);
+}
+.header-inner{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:14px;
+  padding:14px 0;
+}
+
+.brand{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  min-width: 220px;
+}
+.brand .logo{
+  height:64px;
+  width:auto;
+  object-fit:contain;
+}
+.brand strong{
+  font-size:18px;
+  font-weight:800;
+  letter-spacing:-.2px;
+}
+.brand small{
+  display:block;
+  font-size:12px;
+  color: var(--muted2);
+  margin-top:2px;
+}
+
+.nav{
+  display:flex;
+  align-items:center;
+  gap:18px;
+}
+.nav a{
+  font-size:14px;
+  color: rgba(255,255,255,.78);
+  padding:6px 4px;
+  position:relative;
+}
+.nav a:hover{ color: rgba(255,255,255,.95); }
+.nav a.active{
+  color: var(--accent);
+}
+.nav a.active::after{
+  content:"";
+  position:absolute;
+  left:0; right:0;
+  bottom:-8px;
+  height:2px;
+  border-radius:999px;
+  background: var(--accent);
+}
+
+.header-actions{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+.btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  padding:12px 16px;
+  border-radius: 999px;
+  font-weight:800;
+  font-size:14px;
+  border: 1px solid rgba(255,255,255,.14);
+  background: rgba(255,255,255,.06);
+  color: var(--text);
+  cursor:pointer;
+}
+.btn:hover{ background: rgba(255,255,255,.09); }
+
+.btn-primary{
+  background: var(--accent);
+  color: var(--accentDark);
+  border: 0;
+}
+.btn-primary:hover{ filter: brightness(1.05); }
+
+.burger{
+  display:none;
+  width:44px;
+  height:44px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,.14);
+  background: rgba(255,255,255,.06);
+  color: var(--text);
+  cursor:pointer;
+}
+
+.mobile{
+  display:none;
+  border-top: 1px solid var(--line2);
+  padding:10px 0 16px;
+}
+.mobile .nav{
+  flex-direction:column;
+  align-items:flex-start;
+  gap:6px;
+}
+.mobile .nav a{
+  width:100%;
+  padding:10px 8px;
+}
+.mobile .header-actions{
+  margin-top:10px;
+}
+.mobile .btn{
+  width:100%;
+}
+
+/* =========================
+   HERO (clean / sem card)
+========================= */
+.hero{
+  min-height: 520px;
+  display:flex;
+  align-items:center;
+  position:relative;
+  overflow:hidden;
+  border-bottom: 1px solid var(--line2);
+  background:
+    linear-gradient(180deg, rgba(17,17,17,.55) 0%, rgba(17,17,17,.88) 100%),
+    url("../img/hero-clk.png");
+  background-size: cover;            /* pode ajustar para “menos zoom” abaixo */
+  background-position: center 18%;
+  background-repeat: no-repeat;
+}
+
+/* Se quiser MENOS ZOOM no desktop, troque o cover por um tamanho fixo:
+   background-size: 1400px auto; (mais zoom)
+   background-size: 1100px auto; (menos zoom)
+*/
+
+.hero-content{
+  text-align:center;
+  width:100%;
+  padding: 64px 0 56px;
+}
+.hero h1{
+  margin:0 0 16px;
+  font-size: clamp(34px, 4.2vw, 68px);
+  font-weight: 900;
+  letter-spacing: -1px;
+  line-height: 1.05;
+}
+.hero p{
+  margin:0 auto;
+  max-width: 78ch;
+  color: rgba(255,255,255,.78);
+  font-size: 18px;
+  line-height: 1.7;
+}
+
+/* =========================
+   SEÇÕES (mais respiro)
+========================= */
+.section{
+  padding: 64px 0;
+}
+.section-head{
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  gap:16px;
+  margin-bottom: 18px;
+}
+.section-head h2{
+  margin:0;
+  font-size: 22px;
+  font-weight: 900;
+  letter-spacing: -.3px;
+}
+.section-head p{
+  margin:0;
+  color: var(--muted2);
+  font-size: 14px;
+}
+
+.grid-3{display:grid; grid-template-columns: repeat(3, 1fr); gap:16px;}
+.grid-2{display:grid; grid-template-columns: repeat(2, 1fr); gap:16px;}
+
+.card{
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: var(--radius);
+  padding: 18px;
+}
+.card .kicker{
+  display:inline-block;
+  font-size: 12px;
+  color: var(--muted2);
+  margin-bottom: 10px;
+}
+.card h3{
+  margin: 0 0 10px;
+  font-size: 16px;
+  font-weight: 900;
+  letter-spacing:-.2px;
+}
+.card p{
+  margin:0;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.list{
+  margin:10px 0 0;
+  padding-left: 18px;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.75;
+}
+
+.cta{
+  margin-top: 22px;
+  padding: 22px;
+  border-radius: 22px;
+  background: rgba(183,225,0,.08);
+  border: 1px solid rgba(183,225,0,.20);
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:16px;
+}
+.cta h3{
+  margin:0 0 6px;
+  font-size: 18px;
+  font-weight: 900;
+}
+.cta p{
+  margin:0;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.7;
+}
+.cta .actions{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+}
+
+/* =========================
+   CONTATO (cards + form)
+========================= */
+.contact-grid{
+  display:grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap:16px;
+}
+
+.form{
+  display:grid;
+  gap:10px;
+}
+.row{
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  gap:10px;
+}
+label{
+  display:block;
+  font-size: 12px;
+  color: var(--muted2);
+  margin-bottom: 6px;
+}
+input, select, textarea{
+  width:100%;
+  padding: 12px 12px;
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,.14);
+  background: rgba(255,255,255,.05);
+  color: var(--text);
+  outline:none;
+}
+textarea{min-height: 140px; resize: vertical;}
+input:focus, select:focus, textarea:focus{
+  border-color: rgba(183,225,0,.55);
+  box-shadow: 0 0 0 3px rgba(183,225,0,.12);
+}
+.helper{
+  color: var(--muted2);
+  font-size: 12px;
+  line-height: 1.6;
+}
+.anchor{
+  scroll-margin-top: 92px;
+}
+
+.map{
+  width:100%;
+  height: 340px;
+  border: 1px solid rgba(255,255,255,.10);
+  border-radius: 18px;
+  overflow:hidden;
+  background: rgba(255,255,255,.03);
+}
+
+/* =========================
+   FOOTER
+========================= */
+.footer{
+  border-top: 1px solid var(--line2);
+  background: rgba(255,255,255,.02);
+}
+.footer-inner{
+  padding: 22px 0;
+  display:grid;
+  grid-template-columns: 1.2fr .8fr;
+  gap: 14px;
+}
+.footer p, .footer a{
+  margin:0;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.7;
+}
+.footer a:hover{ color: var(--text); }
+.footer-links{
+  display:flex;
+  gap:14px;
+  flex-wrap:wrap;
+  justify-content:flex-end;
+  align-items:flex-start;
+}
+.small{ color: var(--muted2); font-size: 12px; }
+
+/* =========================
+   RESPONSIVO
+========================= */
+@media (max-width: 980px){
+  .footer-inner{ grid-template-columns: 1fr; }
+  .footer-links{ justify-content:flex-start; }
+  .contact-grid{ grid-template-columns: 1fr; }
+}
+
+@media (max-width: 860px){
+  .nav{ display:none; }
+  .burger{ display:inline-flex; align-items:center; justify-content:center; }
+  .mobile{ display:block; }
+
+  .grid-3, .grid-2{ grid-template-columns: 1fr; }
+
+  .hero{
+    min-height: 440px;
+    background:
+      linear-gradient(180deg, rgba(17,17,17,.55) 0%, rgba(17,17,17,.90) 100%),
+      url("../img/hero-clk.png");
+    background-size: cover;
+    background-position: 60% 20%;
+  }
+  .hero p{ font-size: 16px; }
+  .row{ grid-template-columns: 1fr; }
+}
+/* =========================================
+   HOME - Mega Card (Diferenciais + Aplicações)
+========================================= */
+
+.mega-card{
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: 26px;
+  padding: 34px 26px;
+  position: relative;
+  overflow: hidden;
+}
+
+.mega-card{
+  background: #171717;  /* cor única (mais sólida) */
+  border: 1px solid rgba(255,255,255,.08);
+}
+
+.mega-head{
+  text-align:center;
+  padding: 10px 10px 28px;
+}
+
+.mega-head h2{
+  margin:0 0 10px;
+  font-size: clamp(26px, 3.0vw, 44px);
+  font-weight: 900;
+  letter-spacing: -0.8px;
+}
+
+.mega-head p{
+  margin:0 auto;
+  max-width: 70ch;
+  color: rgba(255,255,255,.70);
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+/* Linha com 4 itens (ícone + título + texto) */
+.feature-row{
+  display:grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 22px;
+  padding: 0 6px 22px;
+}
+
+.feature{
+  text-align:center;
+  padding: 14px 10px;
+}
+
+.feature .icon{
+  width: 44px;
+  height: 44px;
+  margin: 0 auto 12px;
+  display:grid;
+  place-items:center;
+  color: var(--accent);
+  opacity: .95;
+}
+
+.feature h3{
+  margin: 0 0 8px;
+  font-size: 18px;
+  font-weight: 900;
+  letter-spacing: -0.2px;
+}
+
+.feature p{
+  margin:0 auto;
+  max-width: 34ch;
+  color: rgba(255,255,255,.72);
+  font-size: 14px;
+  line-height: 1.75;
+}
+
+/* Separador leve dentro do mega card */
+.mega-divider{
+  height:1px;
+  background: rgba(255,255,255,.08);
+  margin: 18px 6px 18px;
+}
+
+/* Aplicações dentro do mesmo card (duas colunas) */
+.mega-subhead{
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  gap: 16px;
+  padding: 6px 6px 14px;
+}
+
+.mega-subhead h3{
+  margin:0;
+  font-size: 20px;
+  font-weight: 900;
+}
+
+.mega-subhead p{
+  margin:0;
+  color: rgba(255,255,255,.60);
+  font-size: 14px;
+}
+
+.mega-apps{
+  display:grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  padding: 0 6px 6px;
+}
+
+.app-card{
+  background: rgba(0,0,0,.18);
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: 18px;
+  padding: 18px;
+}
+
+.app-card h4{
+  margin:0 0 10px;
+  font-size: 18px;
+  font-weight: 900;
+}
+
+.app-card p{
+  margin:0;
+  color: rgba(255,255,255,.72);
+  font-size: 14px;
+  line-height: 1.75;
+}
+
+/* Mobile */
+@media (max-width: 980px){
+  .feature-row{ grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 640px){
+  .mega-card{ padding: 28px 16px; }
+  .feature-row{ grid-template-columns: 1fr; }
+  .mega-apps{ grid-template-columns: 1fr; }
+  .mega-subhead{ flex-direction:column; align-items:flex-start; }
+}
+
+select {
+  color: #fff; /* texto do select fechado */
+}
+
+select option {
+  color: #000; /* texto das opções do dropdown */
+  background: #fff;
+}
