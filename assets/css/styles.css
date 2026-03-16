@@ -138,25 +138,39 @@ img{max-width:100%;display:block}
   background: rgba(255,255,255,.06);
   color: var(--text);
   cursor:pointer;
+  font-size:22px;
+  line-height:1;
+  align-items:center;
+  justify-content:center;
 }
 
 .mobile{
   display:none;
   border-top: 1px solid var(--line2);
   padding:10px 0 16px;
+  background: rgba(17,17,17,.96);
 }
+
+.mobile[data-open="true"]{
+  display:block;
+}
+
 .mobile .nav{
+  display:flex;
   flex-direction:column;
   align-items:flex-start;
   gap:6px;
 }
+
 .mobile .nav a{
   width:100%;
   padding:10px 8px;
 }
+
 .mobile .header-actions{
   margin-top:10px;
 }
+
 .mobile .btn{
   width:100%;
 }
@@ -174,7 +188,7 @@ img{max-width:100%;display:block}
   background:
     linear-gradient(180deg, rgba(17,17,17,.55) 0%, rgba(17,17,17,.88) 100%),
     url("../img/hero-clk.png");
-  background-size: cover;            /* pode ajustar para “menos zoom” abaixo */
+  background-size: cover;
   background-position: center 18%;
   background-repeat: no-repeat;
 }
@@ -389,8 +403,14 @@ input:focus, select:focus, textarea:focus{
 
 @media (max-width: 860px){
   .nav{ display:none; }
-  .burger{ display:inline-flex; align-items:center; justify-content:center; }
-  .mobile{ display:block; }
+  .burger{ display:inline-flex; }
+
+  .mobile{
+    display:none;
+  }
+  .mobile[data-open="true"]{
+    display:block;
+  }
 
   .grid-3, .grid-2{ grid-template-columns: 1fr; }
 
@@ -405,6 +425,7 @@ input:focus, select:focus, textarea:focus{
   .hero p{ font-size: 16px; }
   .row{ grid-template-columns: 1fr; }
 }
+
 /* =========================================
    HOME - Mega Card (Diferenciais + Aplicações)
 ========================================= */
@@ -419,7 +440,7 @@ input:focus, select:focus, textarea:focus{
 }
 
 .mega-card{
-  background: #171717;  /* cor única (mais sólida) */
+  background: #171717;
   border: 1px solid rgba(255,255,255,.08);
 }
 
@@ -549,10 +570,22 @@ input:focus, select:focus, textarea:focus{
 }
 
 select {
-  color: #fff; /* texto do select fechado */
+  color: #fff;
 }
 
 select option {
-  color: #000; /* texto das opções do dropdown */
+  color: #000;
   background: #fff;
+}
+
+.hero-subtitle{
+  font-size: 20px;
+  opacity: 0.9;
+  margin-top: 10px;
+}
+
+.hero-note{
+  font-size: 16px;
+  opacity: 0.75;
+  margin-top: 8px;
 }

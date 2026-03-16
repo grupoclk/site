@@ -2,17 +2,32 @@
   // Mobile menu
   const burger = document.querySelector('[data-burger]');
   const mobile = document.querySelector('[data-mobile]');
+
   if (burger && mobile) {
+    mobile.setAttribute('data-open', 'false');
+    burger.setAttribute('aria-expanded', 'false');
+    burger.setAttribute('aria-label', 'Abrir menu');
+    burger.textContent = '☰';
+
     burger.addEventListener('click', () => {
       const isOpen = mobile.getAttribute('data-open') === 'true';
-      mobile.setAttribute('data-open', String(!isOpen));
-      mobile.style.display = isOpen ? 'none' : 'block';
-      burger.textContent = isOpen ? '☰' : '✕';
+      const nextState = !isOpen;
+
+      mobile.setAttribute('data-open', String(nextState));
+      burger.setAttribute('aria-expanded', String(nextState));
+      burger.setAttribute('aria-label', nextState ? 'Fechar menu' : 'Abrir menu');
+      burger.textContent = nextState ? '✕' : '☰';
     });
 
-    // default hidden
-    mobile.style.display = 'none';
-    mobile.setAttribute('data-open', 'false');
+    // Fecha o menu ao clicar em algum link mobile
+    mobile.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        mobile.setAttribute('data-open', 'false');
+        burger.setAttribute('aria-expanded', 'false');
+        burger.setAttribute('aria-label', 'Abrir menu');
+        burger.textContent = '☰';
+      });
+    });
   }
 
   // Active nav link
@@ -52,7 +67,7 @@ ${msg || '-'}
 
 (Enviado pelo site do Grupo CLK)`;
 
-      const phone = '554299954347';
+      const phone = '5542991191176';
       const url = `https://wa.me/${phone}?text=${encodeURIComponent(texto)}`;
       window.open(url, '_blank', 'noopener,noreferrer');
     });
